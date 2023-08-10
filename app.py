@@ -6,19 +6,16 @@ openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 
 system_prompt_1 = """
 このスレッドでは以下ルールを厳格に守ってください。
-あなたはレストランの評判情報から以下を整理して回答するシステムです。
-・レストランの概要
-・レストランの雰囲気
-・人気メニュー
-・接客態度
+あなたはお店のホームページにある文章をもとに、不芳なお店かを判断するシステムです
+不芳の観点は以下です。以下である確率を0から1の間で答えてください。
 """
 
 system_prompt_2 = """
 
 回答は以下のフォーマットにしてください。
-【レストランの概要】
+【指定された観点の不芳サイトである確率】
 
-【レストランの雰囲気】
+【根拠】
 
 """
 
@@ -62,21 +59,21 @@ def communicate():
     st.session_state["user_input"] = ""  # 入力欄を消去
 
 # ユーザーインターフェイスの構築
-st.title("レストランがあなたのニーズを満たすか調査します")
-st.write("レストランの口コミを入力してください")
-st.write("概要、雰囲気、人気メニュー、接客態度の観点で要約します")
-st.write("また、あなたのニーズを満たすかを調査します")
+st.title("不芳サイトか判断します")
+st.write("サイトの文章を入力してください")
+#st.write("概要、雰囲気、人気メニュー、接客態度の観点で要約します")
+st.write("指定された観点の不芳サイトか判断します")
 
 # ユーザーからの観点指定入力
-aspect_input = st.text_input("ニーズを入力してください（例：小さな子供が泣いても大丈夫か）", key="aspect_input")
+aspect_input = st.text_input("観点を入力してください（例：アダルト、ドラッグ、マルチ商法）", key="aspect_input")
 
 if "user_input" not in st.session_state:
     st.session_state["user_input"] = ""
     
 # ユーザーからの口コミ入力
-review_input = st.text_area("レストランの口コミ", key="review_input")
+review_input = st.text_area("サイトの文章", key="review_input")
     
-if st.button("調査開始"):
+if st.button("判定開始"):
     
     st.session_state["user_input"] = review_input  # 追加する行
     #st.session_state["user_input"] = st.text_area("レストランの口コミ", key="user_input")  # ここに移動
@@ -87,9 +84,9 @@ if st.session_state["messages"]:
     messages = st.session_state["messages"]
 
     for message in reversed(messages[1:]):  # 直近のメッセージを上に
-        speaker = "＜口コミ情報＞"
+        speaker = "＜サイトの文章＞"
         if message["role"]=="assistant":
-            speaker="＜要約結果＞"
+            speaker="＜判定結果＞"
 
         # st.write(speaker + ": " + message["content"])
         st.write("-----------------------------------------------------------------------------------------------")
