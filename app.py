@@ -94,8 +94,6 @@ if st.button("判定開始"):
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
 
-#    st.write(option)
-    
     for message in reversed(messages[1:]):  # 直近のメッセージを上に
         speaker = "＜サイトの文章＞"
         if message["role"]=="assistant":
