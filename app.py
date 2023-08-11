@@ -79,8 +79,9 @@ if "user_input" not in st.session_state:
 review_input = st.text_area("サイトの文章", key="review_input")
 
 option = st.radio(
-    'gpt-3.5-turbo', 'gpt-4')
-    , index=0
+    'model',
+    ('gpt-3.5-turbo', 'gpt-4'),
+    index=0 # デフォルトで左側のボタンを選択状態にする
 )
 
 if st.button("判定開始"):
