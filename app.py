@@ -77,7 +77,12 @@ if "user_input" not in st.session_state:
     
 # ユーザーからの口コミ入力
 review_input = st.text_area("サイトの文章", key="review_input")
-    
+
+option = st.radio(
+    'gpt-3.5-turbo', 'gpt-4')
+    , index=0
+)
+
 if st.button("判定開始"):
     
     st.session_state["user_input"] = review_input  # 追加する行
