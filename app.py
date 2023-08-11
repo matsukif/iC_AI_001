@@ -54,7 +54,7 @@ def communicate():
     # )  
 
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model= option,
         messages=st.session_state["messages"]
     )  
 
@@ -79,7 +79,7 @@ if "user_input" not in st.session_state:
 review_input = st.text_area("サイトの文章", key="review_input")
 
 option = st.radio(
-    '', #ラベルを空に
+    'GPTのバージョン', #ラベルを空に
     ('gpt-3.5-turbo', 'gpt-4'),
     index=0 # デフォルトで左側のボタンを選択状態にする
 )
