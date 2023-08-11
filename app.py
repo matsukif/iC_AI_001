@@ -70,7 +70,7 @@ st.write("サイトの文章を入力してください")
 st.write("指定された観点の不芳サイトか判断します")
 
 # ユーザーからの観点指定入力
-aspect_input = st.text_input("観点を入力してください（例：アダルト、ドラッグ、マルチ商法）", key="aspect_input")
+aspect_input = st.text_input("観点を入力してください（例：アダルト、違法ドラッグ、マルチ商法）", key="aspect_input")
 
 if "user_input" not in st.session_state:
     st.session_state["user_input"] = ""
