@@ -55,6 +55,7 @@ def communicate():
 
     response = openai.ChatCompletion.create(
         model= option,
+        temperature = selected_value,
         messages=st.session_state["messages"]
     )  
 
@@ -83,6 +84,9 @@ option = st.radio(
     ('gpt-3.5-turbo', 'gpt-4'),
     index=0 # デフォルトで左側のボタンを選択状態にする
 )
+
+options_tmp = [i/10 for i in range(21)]
+selected_value = st.selectbox('temperature',options_tmp, index=10)
 
 if st.button("判定開始"):
     
