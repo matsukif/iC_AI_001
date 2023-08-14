@@ -86,7 +86,7 @@ option = st.radio(
 )
 
 options_tmp = [i/2 for i in range(5)]
-selected_value = st.selectbox('temperature （0 ~ 2  低い値：確定的な回答　高い値：ランダムな回答）',options_tmp, index=2)
+selected_value = st.selectbox('temperature （回答のランダム度（0 ～ 2）。低いと確定的、高いとランダムな回答。高くほど回答時間がかかる）',options_tmp, index=2)
 
 if st.button("判定開始"):
     
