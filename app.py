@@ -64,10 +64,10 @@ def communicate():
     st.session_state["user_input"] = ""  # 入力欄を消去
 
 # ユーザーインターフェイスの構築
-st.title("不芳サイトか判断します")
+st.title("不芳サイトか判定します")
 st.write("サイトの文章を入力してください")
 #st.write("概要、雰囲気、人気メニュー、接客態度の観点で要約します")
-st.write("指定された観点の不芳サイトか判断します")
+st.write("指定された観点の不芳サイトか判定します")
 
 # ユーザーからの観点指定入力
 aspect_input = st.text_input("観点を入力してください（例：アダルト、違法ドラッグ、マルチ商法）", key="aspect_input")
